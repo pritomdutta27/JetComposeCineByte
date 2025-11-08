@@ -1,6 +1,6 @@
 package com.pritom.data.model
 
-data class PopularMovie(
+data class MovieItem(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
