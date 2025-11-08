@@ -16,8 +16,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
     }
 }
 
 rootProject.name = "CineByte"
 include(":app")
+include(":core:data")
+include(":features:movielist")
+include(":core:domain")
+include(":core:designsystem")
+include(":features:moviedetails")
