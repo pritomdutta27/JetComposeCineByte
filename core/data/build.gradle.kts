@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
+    id("kotlinx-serialization")
 }
 
 android {
@@ -46,11 +47,13 @@ dependencies {
     implementation(libs.material)
 
     implementation(platform(libs.okhttp.bom))
+    implementation(libs.androidx.tracing.ktx)
     implementation(libs.bundles.network)
-
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    implementation(project.project.project(":core:domain"))
 
     //Testing
     testImplementation(libs.junit)
