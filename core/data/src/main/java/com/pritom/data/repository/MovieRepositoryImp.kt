@@ -4,8 +4,9 @@ import com.pritom.data.datasource.remote.apistrategies.MovieCategoryStrategy
 import com.pritom.domain.model.Movie
 import com.pritom.domain.model.MovieCategory
 import com.pritom.domain.repository.MovieRepository
+import javax.inject.Inject
 
-class MovieRepositoryImpl(
+class MovieRepositoryImpl @Inject constructor(
     private val strategies: Map<MovieCategory, MovieCategoryStrategy>
 ) : MovieRepository {
 

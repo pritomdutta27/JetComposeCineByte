@@ -49,6 +49,7 @@ dependencies {
     implementation(platform(libs.okhttp.bom))
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.bundles.network)
+    implementation(libs.gson)
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

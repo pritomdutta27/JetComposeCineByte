@@ -1,7 +1,9 @@
 package com.pritom.data.model
 
 import com.pritom.domain.model.Movie
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MovieItem(
     val adult: Boolean,
     val backdrop_path: String,
