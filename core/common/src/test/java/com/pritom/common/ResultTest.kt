@@ -13,7 +13,6 @@ import org.junit.Assert.*
  */
 class ResultTest {
 
-
     @Test
     fun result_catches_errors() = runTest {
         flow {
