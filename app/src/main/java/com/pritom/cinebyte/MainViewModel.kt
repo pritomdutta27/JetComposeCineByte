@@ -21,16 +21,23 @@ class MainViewModel @Inject constructor(
     private val _moviesByCategory = MutableStateFlow<Map<MovieCategory, List<Movie>>>(emptyMap())
     val moviesByCategory: StateFlow<Map<MovieCategory, List<Movie>>> = _moviesByCategory
 
+    private var isLoadFirstTime = false
+
     fun loadAllMovies() {
+        if (isLoadFirstTime) return
+        isLoadFirstTime = true
+
         viewModelScope.launch {
             MovieCategory.entries.forEach { category ->
-                getAllMoviesUseCase.invoke(category)
-                    .catch { emit(emptyList()) }
-                    .collect { movies ->
-                        _moviesByCategory.update { current ->
-                            current + (category to movies)
+                launch {
+                    getAllMoviesUseCase.invoke(category)
+                        .catch { emit(emptyList()) }
+                        .collect { movies ->
+                            _moviesByCategory.update { current ->
+                                current + (category to movies)
+                            }
                         }
-                    }
+                }
             }
         }
     }

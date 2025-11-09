@@ -36,9 +36,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        lifecycleScope.launch {
-            viewModel.loadAllMovies()
-        }
+
         setContent {
             CineByteTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -55,7 +53,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MovieScreen(viewModel: MainViewModel) {
+
     val moviesByCategory by viewModel.moviesByCategory.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadAllMovies()
+    }
 
     LazyColumn {
         moviesByCategory.forEach { (category, movies) ->
@@ -74,23 +77,5 @@ fun MovieScreen(viewModel: MainViewModel) {
                 )
             }
         }
-    }
-}
-
-
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CineByteTheme {
-        Greeting("Android")
     }
 }
