@@ -9,7 +9,7 @@ interface MovieApi {
 
     @GET("3/movie/{type}?language=en-US")
     suspend fun getMovieList(
-        @Path("type") type: String = "now_playing",
+        @Path("type") type: String,
         @Query("page") page: Int = 1
     ): MovieResponse
 }
