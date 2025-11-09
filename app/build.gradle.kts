@@ -58,8 +58,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
+    //Own Module
     implementation(project.project.project(":core:domain"))
     implementation(project.project.project(":core:data"))
+    implementation(project.project.project(":core:common"))
 
     //Hilt
     implementation(libs.hilt.android)

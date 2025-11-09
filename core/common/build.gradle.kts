@@ -1,15 +1,12 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
-    id("kotlinx-serialization")
 }
 
 android {
-    namespace = "com.pritom.data"
+    namespace = "com.pritom.common"
     compileSdk {
         version = release(36)
     }
@@ -31,13 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_17
-        }
+    kotlinOptions {
+        jvmTarget = "11"
     }
 }
 
@@ -46,18 +41,13 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    implementation(platform(libs.okhttp.bom))
-    implementation(libs.androidx.tracing.ktx)
-    implementation(libs.bundles.network)
-    implementation(libs.gson)
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    implementation(project.project.project(":core:domain"))
-    implementation(project.project.project(":core:common"))
-
-    //Testing
+    implementation(libs.kotlinx.coroutines.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

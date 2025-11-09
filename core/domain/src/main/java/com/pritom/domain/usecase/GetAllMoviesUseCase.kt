@@ -10,7 +10,5 @@ import javax.inject.Inject
 class GetAllMoviesUseCase @Inject constructor(
     private val repository: MovieRepository
 ) {
-    suspend operator fun invoke(category: MovieCategory): Flow<List<Movie>> = flow {
-        emit(repository.getMovies(category))
-    }
+    suspend operator fun invoke(category: MovieCategory): Flow<List<Movie>> = repository.getMovies(category)
 }
