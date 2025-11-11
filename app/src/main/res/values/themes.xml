@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.CineByte" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/app_color</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/animated_logo</item>
+        <!-- Set the splash screen background, animated icon, and animation
+   duration. -->
+        <item name="windowSplashScreenBackground">@color/app_color</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_cine_byte</item>
+        <item name="postSplashScreenTheme">@style/Theme.CineByte</item>
+        <item name="android:windowSplashScreenBrandingImage" tools:ignore="NewApi">@drawable/title</item>
+    </style>
+
+    <style name="Theme.CineByte" parent="android:Theme.Material.Light.NoActionBar">
+    </style>
 </resources>

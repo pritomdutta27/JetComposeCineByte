@@ -57,8 +57,14 @@ dependencies {
     implementation(project.project.project(":core:domain"))
     implementation(project.project.project(":core:common"))
 
+    implementation(libs.kotlinx.coroutines.core)
+
     //Testing
     testImplementation(libs.junit)
+    testImplementation(libs.test.mockWebServer)
+    testImplementation(libs.test.mockito)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

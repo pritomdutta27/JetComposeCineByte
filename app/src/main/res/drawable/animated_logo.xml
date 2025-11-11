@@ -1,0 +1,109 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="40"
+            android:viewportHeight="40">
+
+            <group
+                android:name="white"
+                android:pivotX="50"
+                android:pivotY="50"
+                android:scaleX="0.8"
+                android:scaleY="0.8">
+            <path
+                android:name="path_1"
+                android:pathData="M 5 4.125 L 19 4.125 C 19.265 4.125 19.52 4.23 19.707 4.418 C 19.895 4.605 20 4.86 20 5.125 L 20 6.125 L 4 6.125 L 4 5.125 C 4 4.86 4.105 4.605 4.293 4.418 C 4.48 4.23 4.735 4.125 5 4.125 Z"
+                android:fillColor="#000000"
+                android:strokeWidth="1"
+                android:fillType="evenOdd"/>
+            <path
+                android:name="path"
+                android:pathData="M 3 4 L 21 4 C 21.265 4 21.52 4.105 21.707 4.293 C 21.895 4.48 22 4.735 22 5 L 22 6 L 2 6 L 2 5 C 2 4.735 2.105 4.48 2.293 4.293 C 2.48 4.105 2.735 4 3 4 Z"
+                android:fillColor="#000000"
+                android:strokeWidth="1"
+                android:fillType="evenOdd"/>
+            <path
+                android:name="path_2"
+                android:pathData="M 1 4 L 23 4 C 23.265 4 23.52 4.105 23.707 4.293 C 23.895 4.48 24 4.735 24 5 L 24 20 C 24 20.265 23.895 20.52 23.707 20.707 C 23.52 20.895 23.265 21 23 21 L 1 21 C 0.735 21 0.48 20.895 0.293 20.707 C 0.105 20.52 0 20.265 0 20 L 0 5 C 0 4.735 0.105 4.48 0.293 4.293 C 0.48 4.105 0.735 4 1 4 Z M 1 6 L 1 9 L 4 9 L 4 6 L 1 6 Z M 1 11 L 1 14 L 4 14 L 4 11 L 1 11 Z M 1 16 L 1 19 L 4 19 L 4 16 L 1 16 Z M 20 6 L 20 9 L 23 9 L 23 6 L 20 6 Z M 20 11 L 20 14 L 23 14 L 23 11 L 20 11 Z M 20 16 L 20 19 L 23 19 L 23 16 L 20 16 Z"
+                android:fillColor="#FFFFFF"
+                android:strokeWidth="1"
+                android:fillType="evenOdd"/>
+            <path
+                android:name="path_3"
+                android:pathData="M 10.226 8.34 L 15.27 11.65 L 10.189 14.902 L 10.226 8.34 Z"
+                android:fillColor="#eb2f3d"
+                android:strokeColor="#eb2f3d"
+                android:strokeWidth="1"/>
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="path_2">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="pathData"
+                android:duration="3000"
+                android:valueFrom="M 1 4 L 23 4 C 23.265 4 23.52 4.105 23.707 4.293 C 23.895 4.48 24 4.735 24 5 L 24 20 C 24 20.265 23.895 20.52 23.707 20.707 C 23.52 20.895 23.265 21 23 21 L 1 21 C 0.735 21 0.48 20.895 0.293 20.707 C 0.105 20.52 0 20.265 0 20 L 0 5 C 0 4.735 0.105 4.48 0.293 4.293 C 0.48 4.105 0.735 4 1 4 Z M 1 6 L 1 9 L 4 9 L 4 6 L 1 6 Z M 1 11 L 1 14 L 4 14 L 4 11 L 1 11 Z M 1 16 L 1 19 L 4 19 L 4 16 L 1 16 Z M 20 6 L 20 9 L 23 9 L 23 6 L 20 6 Z M 20 11 L 20 14 L 23 14 L 23 11 L 20 11 Z M 20 16 L 20 19 L 23 19 L 23 16 L 20 16 Z"
+                android:valueTo="M 1 6 L 23 6 C 23.265 6 23.52 6.105 23.707 6.293 C 23.895 6.48 24 6.735 24 7 L 24 22 C 24 22.265 23.895 22.52 23.707 22.707 C 23.52 22.895 23.265 23 23 23 L 1 23 C 0.735 23 0.48 22.895 0.293 22.707 C 0.105 22.52 0 22.265 0 22 L 0 7 C 0 6.735 0.105 6.48 0.293 6.293 C 0.48 6.105 0.735 6 1 6 Z M 1 8 L 1 11 L 4 11 L 4 8 L 1 8 Z M 1 13 L 1 16 L 4 16 L 4 13 L 1 13 Z M 1 18 L 1 21 L 4 21 L 4 18 L 1 18 Z M 20 8 L 20 11 L 23 11 L 23 8 L 20 8 Z M 20 13 L 20 16 L 23 16 L 23 13 L 20 13 Z M 20 18 L 20 21 L 23 21 L 23 18 L 20 18 Z"
+                android:valueType="pathType"
+                android:interpolator="@android:anim/bounce_interpolator"/>
+        </aapt:attr>
+    </target>
+    <target android:name="path_1">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="pathData"
+                    android:duration="3000"
+                    android:valueFrom="M 5 4.125 L 19 4.125 C 19.265 4.125 19.52 4.23 19.707 4.418 C 19.895 4.605 20 4.86 20 5.125 L 20 6.125 L 4 6.125 L 4 5.125 C 4 4.86 4.105 4.605 4.293 4.418 C 4.48 4.23 4.735 4.125 5 4.125 Z"
+                    android:valueTo="M 5 2 L 19 2 C 19.265 2 19.52 2.105 19.707 2.293 C 19.895 2.48 20 2.735 20 3 L 20 4 L 4 4 L 4 3 C 4 2.735 4.105 2.48 4.293 2.293 C 4.48 2.105 4.735 2 5 2 Z"
+                    android:valueType="pathType"
+                    android:interpolator="@android:anim/overshoot_interpolator"/>
+                <objectAnimator
+                    android:propertyName="fillColor"
+                    android:duration="3000"
+                    android:valueFrom="#dae0ef"
+                    android:valueTo="#fcd125"
+                    android:valueType="colorType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path_3">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="pathData"
+                    android:duration="3000"
+                    android:valueFrom="M 10.226 8.34 L 15.27 11.65 L 10.189 14.902 L 10.226 8.34 Z"
+                    android:valueTo="M 10.226 11.027 L 15.27 14.337 L 10.189 17.59 L 10.226 11.027 Z"
+                    android:valueType="pathType"
+                    android:interpolator="@android:anim/overshoot_interpolator"/>
+<!--                <objectAnimator-->
+<!--                    android:propertyName="fillAlpha"-->
+<!--                    android:duration="1000"-->
+<!--                    android:valueFrom="0"-->
+<!--                    android:valueTo="1"-->
+<!--                    android:valueType="floatType"-->
+<!--                    android:interpolator="@android:anim/overshoot_interpolator"/>-->
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="fillColor"
+                android:duration="3000"
+                android:valueFrom="#dae0ef"
+                android:valueTo="#8CFDFDFD"
+                android:valueType="colorType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+        </aapt:attr>
+    </target>
+</animated-vector>

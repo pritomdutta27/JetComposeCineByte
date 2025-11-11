@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.pritom.cinebyte.ui.theme.CineByteTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,11 +33,14 @@ import kotlin.collections.component2
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
+    private var keepSplash = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
+// Keep the splash screen visible for this Activity.
         setContent {
             CineByteTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -46,6 +50,13 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+        splashScreen.setKeepOnScreenCondition { keepSplash }
+        lifecycleScope.launch {
+            if (intent.getStringExtra("receiverData") == null){
+                delay(4500)
+            }
+            keepSplash = false
         }
     }
 }
