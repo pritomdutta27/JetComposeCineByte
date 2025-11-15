@@ -6,7 +6,7 @@ import com.pritom.common.Result
 import com.pritom.common.asResult
 import com.pritom.domain.model.Movie
 import com.pritom.domain.model.MovieCategory
-import com.pritom.domain.usecase.GetAllMoviesUseCase
+import com.pritom.domain.usecase.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getAllMoviesUseCase: GetAllMoviesUseCase,
+    private val getAllMoviesUseCase: GetMoviesUseCase,
 ) : ViewModel() {
 
     private val _moviesByCategory = MutableStateFlow<Map<MovieCategory, List<Movie>>>(emptyMap())
