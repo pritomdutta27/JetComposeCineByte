@@ -22,7 +22,7 @@ data class MovieItem(
 ){
     fun toDomain() = Movie(
         id = id,
-        title = original_title,
+        title = title,
         posterUrl = poster_path,
         rating = vote_average
     )

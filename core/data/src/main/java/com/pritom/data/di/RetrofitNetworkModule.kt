@@ -1,6 +1,7 @@
 package com.pritom.data.di
 
 import androidx.tracing.trace
+import com.pritom.data.datasource.remote.ApiExceptionCallAdapterFactory
 import com.pritom.data.datasource.remote.MovieApi
 import com.pritom.data.datasource.remote.apistrategies.MovieCategoryStrategy
 import com.pritom.data.datasource.remote.apistrategies.NowPlayingMoviesStrategy
@@ -45,6 +46,7 @@ object RetrofitNetworkModule {
             .addConverterFactory(
                 jsonNetwork.asConverterFactory("application/json".toMediaType()),
             )
+            .addCallAdapterFactory(ApiExceptionCallAdapterFactory())
             .build()
             .create(MovieApi::class.java)
     }

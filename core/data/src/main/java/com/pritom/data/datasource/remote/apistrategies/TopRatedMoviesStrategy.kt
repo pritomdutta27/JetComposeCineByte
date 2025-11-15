@@ -14,7 +14,7 @@ class TopRatedMoviesStrategy @Inject constructor(private val api: MovieApi) :
     override suspend fun fetchMovies(): Flow<List<Movie>> {
         return flow {
             emit(
-                api.getMovieList(type = MovieCategory.NOW_PLAYING.category)
+                api.getMovieList(type = MovieCategory.TOP_RATED.category)
                     .results.map { it.toDomain() }
             )
         }.flowOn(IO)
