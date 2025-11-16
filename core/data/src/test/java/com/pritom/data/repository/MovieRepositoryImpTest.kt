@@ -18,7 +18,7 @@ import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class MovieRepositoryTest {
+class MovieRepositoryImpTest {
 
     @Mock
     lateinit var sutApi: MovieRepositoryImpl
