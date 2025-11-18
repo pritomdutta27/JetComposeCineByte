@@ -24,6 +24,8 @@ data class MovieItem(
         id = id,
         title = title,
         posterUrl = poster_path,
-        rating = vote_average
+        movieOverview = overview,
+        rating = vote_average,
+
     )
 }

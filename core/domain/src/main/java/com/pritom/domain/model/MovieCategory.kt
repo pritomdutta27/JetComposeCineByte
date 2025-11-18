@@ -7,9 +7,9 @@ enum class MoviePosition(val position: Int) {
 }
 
 enum class MovieCategory(val category: String, val position: MoviePosition) {
-    NOW_PLAYING("now_playing", MoviePosition.Third),
-    TOP_RATED("top_rated", MoviePosition.First),
-    POPULAR("popular", MoviePosition.Second),
+    NOW_PLAYING("now_playing", MoviePosition.First),
+    TOP_RATED("top_rated", MoviePosition.Second),
+    POPULAR("popular", MoviePosition.Third),
 }
 
 fun Map<MovieCategory, List<Movie>>.sortedByPosition(): Map<MovieCategory, List<Movie>> {

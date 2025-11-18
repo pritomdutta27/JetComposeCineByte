@@ -46,9 +46,7 @@ class MainViewModel @Inject constructor(
                                     Result.Loading -> {}
                                     is Result.Success -> {
                                         _moviesByCategory.update { current ->
-//                                            current + (category to moviesResult.data)
                                             val updated = current + (category to moviesResult.data)
-                                            // Sort dynamically - NOW_PLAYING first, then others alphabetically
                                             updated.sortedByPosition()
                                         }
                                     }

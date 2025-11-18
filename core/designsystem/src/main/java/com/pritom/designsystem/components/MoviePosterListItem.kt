@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -29,7 +30,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 
 @Composable
-fun MoviePosterGridItem(
+fun MoviePosterListItem(
     modifier: Modifier = Modifier,
     imageUrl: String = "https://image.tmdb.org/t/p/original/kGLgaDrYWmTAdRFzGP5pBquRnhO.jpg",
     movieName: String = "Stranger Things",
@@ -39,7 +40,7 @@ fun MoviePosterGridItem(
 
     val offset = Offset(2.0f, 2.0f)
 
-    Row(modifier = modifier.height(100.dp)) {
+    Row(modifier = modifier.height(160.dp)) {
 
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -48,7 +49,7 @@ fun MoviePosterGridItem(
                 .build(),
             modifier = Modifier
                 .clip(RoundedCornerShape(9.dp))
-                .aspectRatio(.674f),
+                .aspectRatio(9f/16f),
             contentDescription = "slider item",
             contentScale = ContentScale.Crop
         )
@@ -62,7 +63,7 @@ fun MoviePosterGridItem(
                 overflow = TextOverflow.Ellipsis,
                 fontWeight = FontWeight.W500,
                 style = TextStyle(
-                    fontSize = 15.sp,
+                    fontSize = 18.sp,
                     color = Color.White,
                     letterSpacing = 1.1.sp,
                     shadow = Shadow(
@@ -76,11 +77,11 @@ fun MoviePosterGridItem(
             Text(
                 text = movieOverView,
                 modifier = Modifier.padding(4.dp),
-                maxLines = 2,
+                maxLines = 4,
                 overflow = TextOverflow.Ellipsis,
                 fontWeight = FontWeight.Normal,
                 style = TextStyle(
-                    fontSize = 11.sp,
+                    fontSize = 14.sp,
                     color = Color.Gray,
                     letterSpacing = 1.1.sp,
                     shadow = Shadow(
@@ -101,6 +102,6 @@ fun MoviePosterGridItem(
 
 @Preview
 @Composable
-fun MoviePosterGridItemPreview(){
-    MoviePosterGridItem()
+fun MoviePosterListItemPreview(){
+    MoviePosterListItem()
 }

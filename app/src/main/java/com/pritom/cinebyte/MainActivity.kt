@@ -13,10 +13,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,7 +35,9 @@ import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.pritom.cinebyte.ui.theme.CineByteTheme
+import com.pritom.designsystem.components.MoviePosterGridItem
 import com.pritom.designsystem.components.MoviePosterItem
+import com.pritom.designsystem.components.MoviePosterListItem
 import com.pritom.designsystem.components.MovieSliderItem
 import com.pritom.domain.model.MovieCategory
 import com.pritom.domain.model.MoviePosition
@@ -58,7 +66,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     Box {
-                        MovieSliderItem()
+//                        MovieSliderItem()
                         MovieScreen(viewModel)
                     }
 
@@ -85,42 +93,82 @@ fun MovieScreen(viewModel: MainViewModel) {
         viewModel.loadAllMovies()
     }
 
+    LazyColumn(
+        modifier = Modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
 
-    Column(modifier = Modifier.padding(top = 200.dp)) {
         moviesByCategory.forEach { (category, movies) ->
-
             if (category.position == MoviePosition.First) {
-                LazyRow(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp), // Adds spacing between items
-                    contentPadding = PaddingValues(horizontal = 10.dp) // Adds padding to the start/end of the list
-                ) {
-                    items(items = movies) { movie ->
-                        MoviePosterItem(movieName = movie.title, imageUrl = movie.posterUrl)
+                item {
+                    Box {
+                        MovieSliderItem()
+                        LazyRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 200.dp),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp), // Adds spacing between items
+                            contentPadding = PaddingValues(horizontal = 10.dp) // Adds padding to the start/end of the list
+                        ) {
+                            items(items = movies) { movie ->
+                                MoviePosterItem(movieName = movie.title, imageUrl = movie.posterUrl)
+                            }
+                        }
                     }
                 }
-            } else {
-                LazyColumn {
-                    item {
-                        Text(
-                            text = category.category.replace("_", " ").uppercase(),
-                            style = MaterialTheme.typography.titleLarge,
-                            color = Color.Red
-                        )
-                    }
 
-                    items(items = movies) {
-                        Text(
-                            text = it.title,
-                            style = MaterialTheme.typography.titleLarge,
-                            color = Color.White
-                        )
+            } else if (category.position == MoviePosition.Second) {
+
+                item {
+                    Text(
+                        text = category.category.replace("_", " ").uppercase(),
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.Red
+                    )
+                }
+
+                item {
+                    LazyHorizontalGrid(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(320.dp)
+                            .padding(20.dp),
+                        rows = GridCells.Fixed(3),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        items(movies.size) {
+                            MoviePosterGridItem(
+                                modifier = Modifier.width(300.dp),
+                                movieName = movies[it].title,
+                                imageUrl = movies[it].posterUrl,
+                                rating = movies[it].rating.toString(),
+                                movieOverView = movies[it].movieOverview
+                            )
+                        }
                     }
+                }
+
+            } else {
+                item {
+                    Text(
+                        text = category.category.replace("_", " ").uppercase(),
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.Red
+                    )
+                }
+
+                items(items = movies) {
+                    MoviePosterListItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        movieName = it.title,
+                        imageUrl = it.posterUrl,
+                        rating = it.rating.toString(),
+                        movieOverView = it.movieOverview
+                    )
                 }
             }
-
         }
+
     }
 }
