@@ -63,6 +63,7 @@ dependencies {
     implementation(project.project.project(":core:domain"))
     implementation(project.project.project(":core:data"))
     implementation(project.project.project(":core:common"))
+    implementation(project.project.project(":core:designsystem"))
 
     //Hilt
     implementation(libs.hilt.android)

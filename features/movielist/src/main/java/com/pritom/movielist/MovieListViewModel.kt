@@ -6,6 +6,7 @@ import com.pritom.common.Result
 import com.pritom.common.asResult
 import com.pritom.domain.model.Movie
 import com.pritom.domain.model.MovieCategory
+import com.pritom.domain.model.sortedByPosition
 import com.pritom.domain.usecase.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,23 +30,29 @@ class MovieListViewModel @Inject constructor(
         isLoadFirstTime = true
 
         viewModelScope.launch {
-            MovieCategory.entries.forEach { category ->
-                launch {
-                    getAllMoviesUseCase.invoke(category)
-                        .asResult()
-                        .collect { moviesResult ->
-                            when (moviesResult) {
-                                Result.Loading -> {}
-                                is Result.Error -> {}
-                                is Result.Success -> {
-                                    _moviesByCategory.update { current ->
-                                        current + (category to moviesResult.data)
+            MovieCategory.entries
+                .forEach { category ->
+                    launch {
+                        getAllMoviesUseCase.invoke(category)
+                            .asResult()
+                            .collect { moviesResult ->
+                                when (moviesResult) {
+                                    is Result.Error -> {}
+                                    Result.Loading -> {}
+                                    is Result.Success -> {
+                                        _moviesByCategory.update { current ->
+                                            (current + (category to moviesResult.data)).sortedByPosition()
+//                                            val updated = current + (category to moviesResult.data)
+//                                            updated.toList()
+//                                                .sortedBy { (category, _) -> category.postion }
+//                                                .toMap()
+                                        }
+
                                     }
                                 }
                             }
-                        }
+                    }
                 }
-            }
         }
     }
 
